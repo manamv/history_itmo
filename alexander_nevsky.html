@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Александр Ярославич Невский: Россов усердный защитник</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-panel: rgba(14, 20, 31, 0.94);
+      --bg-card: rgba(22, 31, 48, 0.78);
+      --bg-card-hover: rgba(30, 42, 64, 0.9);
+      --gold-primary: #cba135;
+      --gold-bright: #ffd54f;
+      --gold-light: #fff3c4;
+      --gold-dim: rgba(203, 161, 53, 0.22);
+      --red-accent: #a82e2e;
+      --red-soft: rgba(168, 46, 46, 0.18);
+      --blue-nordic: #2a4b7c;
+      --blue-soft: rgba(42, 75, 124, 0.2);
+      --text-main: #edf2f7;
+      --text-muted: #9aa8be;
+      --border-gold: 1px solid rgba(203, 161, 53, 0.38);
+      --shadow-elevation: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(203, 161, 53, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 12% 15%, rgba(168, 46, 46, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 88% 82%, rgba(42, 75, 124, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(203, 161, 53, 0.05) 0%, transparent 60%),
+        linear-gradient(180deg, #05070a 0%, #0c121b 100%);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      padding: 40px 16px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .poster {
+      max-width: 1120px;
+      width: 100%;
+      background: var(--bg-panel);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(203, 161, 53, 0.5);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: var(--shadow-elevation);
+      position: relative;
+    }
+
+    /* Декоративные уголки старинного оклада книги */
+    .corner {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border: 2px solid var(--gold-primary);
+      pointer-events: none;
+    }
+    .c-tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+    .c-tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
+    .c-bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
+    .c-br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
+
+    /* Внутренняя золоченая окантовка */
+    .inner-border {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border: 1px solid rgba(203, 161, 53, 0.18);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    /* Шапка постера */
+    header {
+      margin-bottom: 35px;
+      border-bottom: 1px solid var(--gold-dim);
+      padding-bottom: 32px;
+    }
+
+    .header-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .portrait-wrapper {
+      width: 230px;
+      height: 290px;
+      border: 2px solid var(--gold-primary);
+      border-radius: 115px 115px 12px 12px;
+      padding: 7px;
+      background: linear-gradient(180deg, rgba(203, 161, 53, 0.25) 0%, rgba(10, 16, 26, 0.9) 100%);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(203, 161, 53, 0.25);
+    }
+
+    .portrait-svg {
+      width: 100%;
+      height: 100%;
+      border-radius: 108px 108px 8px 8px;
+    }
+
+    .tag-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      display: inline-block;
+      padding: 5px 16px;
+      border: 1px solid var(--gold-primary);
+      border-radius: 40px;
+      background: rgba(203, 161, 53, 0.1);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .lecture-theme {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 16px;
+    }
+
+    .quote-card {
+      background: rgba(0, 0, 0, 0.45);
+      border-left: 3.5px solid var(--gold-primary);
+      padding: 14px 20px;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #d8e2ef;
+      font-size: 13.5px;
+      line-height: 1.6;
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    .quote-caption {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-size: 11.5px;
+      color: var(--gold-bright);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Заголовки разделов */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0 20px 0;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      color: var(--gold-light);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-primary) 0%, transparent 100%);
+      width: 100%;
+    }
+
+    /* Свойства личности и именослов */
+    .personality-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .p-card {
+      background: var(--bg-card);
+      border: var(--border-gold);
+      border-radius: 8px;
+      padding: 14px 16px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .p-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .p-title {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--gold-bright);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .p-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .p-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Геополитика XIII века */
+    .threat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .threat-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px;
+      border: var(--border-gold);
+      position: relative;
+    }
+
+    .threat-card.east {
+      border-left: 4px solid var(--gold-primary);
+      background: linear-gradient(135deg, rgba(203, 161, 53, 0.08) 0%, var(--bg-card) 60%);
+    }
+
+    .threat-card.west {
+      border-left: 4px solid #5a8ae6;
+      background: linear-gradient(135deg, var(--blue-soft) 0%, var(--bg-card) 60%);
+    }
+
+    .threat-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .east .threat-badge { color: var(--gold-bright); }
+    .west .threat-badge { color: #9bc0ff; }
+
+    .threat-card h3 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .threat-card p {
+      font-size: 12.8px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .accent-detail {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+      font-size: 12px;
+      color: #d1dcec;
+      border-left: 2px solid var(--gold-primary);
+    }
+
+    /* Схема Новгородской республики */
+    .veche-scheme {
+      background: linear-gradient(180deg, rgba(16, 24, 38, 0.95) 0%, rgba(10, 15, 25, 0.95) 100%);
+      border: 1px dashed rgba(203, 161, 53, 0.35);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 35px;
+    }
+
+    .veche-title {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 14px;
+    }
+
+    .veche-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.3fr;
+      gap: 15px;
+    }
+
+    .veche-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+
+    .veche-item.highlight {
+      border: 1px solid var(--gold-primary);
+      background: rgba(203, 161, 53, 0.07);
+    }
+
+    .veche-role {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .highlight .veche-role { color: var(--gold-bright); }
+
+    .veche-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Таймлайн */
+    .timeline {
+      position: relative;
+      margin-left: 18px;
+      padding-left: 30px;
+      border-left: 2px solid rgba(203, 161, 53, 0.35);
+      margin-bottom: 35px;
+    }
+
+    .t-step {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .t-step:last-child { margin-bottom: 0; }
+
+    .t-marker {
+      position: absolute;
+      left: -37px;
+      top: 3px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold-bright);
+      border: 2px solid var(--bg-dark);
+      box-shadow: 0 0 10px rgba(255, 213, 79, 0.9);
+    }
+
+    .t-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .t-date {
+      font-family: 'Cinzel', serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      white-space: nowrap;
+    }
+
+    .t-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .t-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 6px;
+      padding: 13px 16px;
+    }
+
+    .t-card p {
+      font-size: 12.8px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .t-quote {
+      margin-top: 8px;
+      padding: 6px 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border-left: 2px solid var(--gold-primary);
+      font-style: italic;
+      font-size: 12px;
+      color: var(--gold-light);
+    }
+
+    /* Стратегический выбор */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .strat-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px;
+      border: var(--border-gold);
+    }
+
+    .strat-card.west-mode { border-top: 3.5px solid var(--red-accent); }
+    .strat-card.east-mode { border-top: 3.5px solid var(--gold-bright); }
+
+    .strat-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .west-mode .strat-title { color: #ff7676; }
+    .east-mode .strat-title { color: var(--gold-bright); }
+
+    .strat-list {
+      list-style: none;
+      font-size: 12.8px;
+      color: var(--text-muted);
+    }
+
+    .strat-list li {
+      margin-bottom: 9px;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.45;
+    }
+
+    .strat-list li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--gold-primary);
+      font-size: 14px;
+    }
+
+    /* Футер */
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gold-dim);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .header-layout { grid-template-columns: 1fr; text-align: center; }
+      .portrait-wrapper { margin: 0 auto; }
+      .tag-badge { align-self: center; }
+      .personality-grid { grid-template-columns: 1fr 1fr; }
+      .threat-grid, .strategy-grid, .veche-grid { grid-template-columns: 1fr; }
+      .poster { padding: 28px 18px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster">
+    <div class="inner-border"></div>
+    <div class="corner c-tl"></div>
+    <div class="corner c-tr"></div>
+    <div class="corner c-bl"></div>
+    <div class="corner c-br"></div>
+
+    <header>
+      <div class="header-layout">
+        <!-- Высокодетализированный портретный блок князя -->
+        <div class="portrait-wrapper">
+          <svg class="portrait-svg" viewBox="0 0 220 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="280" fill="#0c121d"/>
+            <!-- Декоративное сияние / нимб канонизированного святого -->
+            <circle cx="110" cy="105" r="78" stroke="#cba135" stroke-width="2.5" stroke-dasharray="5 3" fill="rgba(203, 161, 53, 0.08)"/>
+            <circle cx="110" cy="105" r="85" stroke="rgba(255, 213, 79, 0.4)" stroke-width="1"/>
+            
+            <!-- Княжеский алый корзно (плащ) с золотой оторочкой -->
+            <path d="M40 280 C46 195 70 165 100 160 C120 160 150 195 180 280 Z" fill="#7a2121"/>
+            <path d="M40 280 C58 215 76 185 100 180 C124 180 142 215 180 280 Z" fill="#581616"/>
+            <path d="M98 160 L122 160 L110 180 Z" fill="#ffd54f"/>
+
+            <!-- Кольчужная рубаха и бармица -->
+            <path d="M78 160 C88 150 132 150 142 160 L152 280 L68 280 Z" fill="#243042" stroke="#cba135" stroke-width="1.5"/>
+            <path d="M76 125 C76 155 90 172 110 172 C130 172 144 155 144 125 Z" fill="#1b2432"/>
+
+            <!-- Лик и борода князя -->
+            <path d="M85 105 C85 138 98 152 110 152 C122 152 135 138 135 105 Z" fill="#deb48f"/>
+            <path d="M86 116 C86 148 98 158 110 158 C122 158 134 148 134 116 C128 130 118 135 110 135 C102 135 92 130 86 116 Z" fill="#4a3525"/>
+            <circle cx="100" cy="102" r="2.5" fill="#1a140e"/>
+            <circle cx="120" cy="102" r="2.5" fill="#1a140e"/>
+            <path d="M95 96 Q100 94 105 96" stroke="#1a140e" stroke-width="1.8" fill="none"/>
+            <path d="M115 96 Q120 94 125 96" stroke="#1a140e" stroke-width="1.8" fill="none"/>
+
+            <!-- Боевой шелом с носовой стрелкой -->
+            <path d="M82 92 C82 45 110 20 110 20 C110 20 138 45 138 92 Z" fill="#7d8a9e" stroke="#cba135" stroke-width="2"/>
+            <path d="M110 14 L110 26" stroke="#ffd54f" stroke-width="3" stroke-linecap="round"/>
+            <path d="M79 92 C90 87 130 87 141 92 L137 101 L83 101 Z" fill="#cba135"/>
+            <path d="M108 86 L112 86 L111 118 L109 118 Z" fill="#ffd54f"/>
+            
+            <!-- Окантовочная надпись -->
+            <text x="110" y="270" text-anchor="middle" font-family="'Cinzel', serif" font-size="10" font-weight="700" fill="#ffd54f" letter-spacing="2">СВ. КНЯЗЬ АЛЕКСАНДРЪ</text>
+          </svg>
+        </div>
+
+        <div>
+          <span class="tag-badge">Практическое задание по видеолекции</span>
+          <h1>АЛЕКСАНДР ЯРОСЛАВИЧ НЕВСКИЙ</h1>
+          <div class="lecture-theme">«Россов усердный защитник» (XIII век)</div>
+
+          <div class="quote-card">
+            «Идите и скажите всем в чужих краях, что Русь жива. Пусть без страха жалуют к нам в гости. 
+            Но если кто с мечом к нам войдёт, тот от меча и погибнет. На том стоит и стоять будет русская земля»
+            <span class="quote-caption">Эпиграф лекции: к/ф Сергея Эйзенштейна и Дмитрия Васильева «Александр Невский»</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Свойства личности, именослов и происхождение -->
+    <div class="personality-grid">
+      <div class="p-card">
+        <div class="p-title">Значение имени</div>
+        <div class="p-value">«Защитник людей»</div>
+        <div class="p-desc">Греческое происхождение («оберегающий муж»). В именослове домонгольской Руси у Рюриковичей встречалось лишь дважды.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-title">Дата и место рождения</div>
+        <div class="p-value">ок. 1221 г. • Переяславль</div>
+        <div class="p-desc">Родился в Переяславле-Залесском в семье князя Ярослава Всеволодовича («кроткий, человеколюбивый») и княгини Феодосии.</div>
+      </div>
+      <div class="p-card">
+        <div class="p-title">Крещение и постриг</div>
+        <div class="p-value">Спасо-Преображенский собор</div>
+        <div class="p-desc">Один из немногих сохранившихся храмов домонгольской эпохи. Место крещения и княжеского обряда инициации (пострига).</div>
+      </div>
+      <div class="p-card">
+        <div class="p-title">Княжеские печати</div>
+        <div class="p-value">Воин-тезоименит</div>
+        <div class="p-desc">На подлинных свинцовых печатях выбит пеший и конный воин с надписью «Александр», чей конкретный святой патрон остается загадкой.</div>
+      </div>
+    </div>
+
+    <!-- Раздел 1: Геополитическая обстановка XIII века -->
+    <div class="section-title">
+      <h2>1. Эпоха испытаний: Русь между двух огней</h2>
+    </div>
+
+    <div class="threat-grid">
+      <div class="threat-card east">
+        <div class="threat-badge">Угроза с Востока • Степное нашествие</div>
+        <h3>31 мая 1223 г. — Разведка боем на реке Калке</h3>
+        <p>Первое катастрофическое столкновение русских дружин и половцев с монголами. Из-за междоусобной разобщенности войско разгромлено: погибли 12 князей (раздавлены под помостом пирующих победителей). Изучив оборону Руси, монголы сожгли городок Святополч (в 56 верстах от Киева) и отошли.</p>
+        <div class="accent-detail">
+          <strong>Декабрь 1237 – 1238 гг.:</strong> Нашествие Батыя. Стерта с лица земли Рязань (не восстановилась на прежнем месте). 4 марта 1238 г. на р. Сити пал великий князь Владимирский Юрий Всеволодович.
+        </div>
+      </div>
+
+      <div class="threat-card west">
+        <div class="threat-badge">Угроза с Запада • Католическая экспансия</div>
+        <h3>Римская курия и Северные крестовые походы</h3>
+        <p>Папа Гонорий III призвал окатоличивать прибалтийские земли. Папа Григорий IX развернул крестовый поход на Псков и Новгород. В буллах января 1229 г. русские названы «неверными и врагами Бога». В 1237 г. Тевтонский орден (осн. 1198) объединился с орденом Меченосцев (осн. 1202).</p>
+        <div class="accent-detail">
+          <strong>1224 год:</strong> Рыцари захватили древний русский город Юрьев, основанный Ярославом Мудрым, начав прямое наступление на новгородские пределы.
+        </div>
+      </div>
+    </div>
+
+    <!-- Раздел 2: Государственное устройство Новгорода -->
+    <div class="section-title">
+      <h2>2. Политический строй Новгородской земли</h2>
+    </div>
+
+    <div class="veche-scheme">
+      <div class="veche-title">Разделение властей в Новгородской вечевой республике (с 1236 г.)</div>
+      <div class="veche-grid">
+        <div class="veche-item">
+          <div class="veche-role">🏛️ Вече, Посадник и Тысяцкий</div>
+          <div class="veche-desc">Вече (собрание влиятельных бояр и купцов) определяло политику. Посадник ведал судом и землями, а тысяцкий управлял городским ополчением и налогами.</div>
+        </div>
+        <div class="veche-item highlight">
+          <div class="veche-role">⚔️ Князь Александр Ярославич</div>
+          <div class="veche-desc">Приглашался исключительно для военной сферы. С дружиной оборонял рубежи республики, не вмешиваясь во внутреннее самоуправление города.</div>
+        </div>
+        <div class="veche-item">
+          <div class="veche-role">🛡️ Фортификационная система</div>
+          <div class="veche-desc">Александр возвел линию крепостей по реке Шелони на западных границах и выставил передовые форпосты для отражения литовских набегов.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Раздел 3: Хроника этапов жизни князя -->
+    <div class="section-title">
+      <h2>3. Этапы жизненного пути и ратное возмужание</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="t-step">
+        <div class="t-marker"></div>
+        <div class="t-header">
+          <div class="t-date">Ок. 1226 года</div>
+          <div class="t-name">Обряд княжеского пострига</div>
+        </div>
+        <div class="t-card">
+          <p>В Спасо-Преображенском соборе совершен переход из детства в отрочество: архиерей срезал пряди волос отроков Александра и Фёдора. Княжичи получили первые боевые мечи, сели на боевых коней и начали обучаться воинскому ремеслу.</p>
+        </div>
+      </div>
+
+      <div class="t-step">
+        <div class="t-marker"></div>
+        <div class="t-header">
+          <div class="t-date">1228 год</div>
+          <div class="t-name">Первое летописное упоминание и новгородское наместничество</div>
+        </div>
+        <div class="t-card">
+          <p>Отец Ярослав оставляет наместниками в Великом Новгороде 8-летнего Фёдора и 7-летнего Александра. Княжичи стойко проходят через суровые испытания: голод, разрушительные пожары и стихийный бунт горожан.</p>
+        </div>
+      </div>
+
+      <div class="t-step">
+        <div class="t-marker"></div>
+        <div class="t-header">
+          <div class="t-date">1233 — 1234 годы</div>
+          <div class="t-name">Старшинство и битва на реке Омовже (прообраз Ледового побоища)</div>
+        </div>
+        <div class="t-card">
+          <p>В 1233 г. внезапно умирает 13-летний брат Фёдор — Александр становится старшим наследником. Зимой 1234 г. после набега немцев на Изборск и городок Тёсово князь вместе с отцом громит орден Меченосцев на льду реки Омовжи:</p>
+          <div class="t-quote">
+            «И обломившася, истопе их много... а иные язвени бежаша в Юрьев, а друзи в Медвежью голову...» (Новгородская первая летопись)
+          </div>
+        </div>
+      </div>
+
+      <div class="t-step">
+        <div class="t-marker"></div>
+        <div class="t-header">
+          <div class="t-date">1236 год</div>
+          <div class="t-name">Самостоятельное новгородское княжение (15 лет)</div>
+        </div>
+        <div class="t-card">
+          <p>Ярослав Всеволодович садится на Киевский престол. 15-летний Александр становится полновластным военачальником Новгорода, начинает укреплять речные границы и отражать набеги с запада.</p>
+        </div>
+      </div>
+
+      <div class="t-step">
+        <div class="t-marker"></div>
+        <div class="t-header">
+          <div class="t-date">1238 год</div>
+          <div class="t-name">Великое княжение отца во Владимире</div>
+        </div>
+        <div class="t-card">
+          <p>После гибели Юрия Всеволодовича на реке Сити отец Александра Ярослав Всеволодович по праву старшинства занимает Владимирский великокняжеский стол, организуя оборону и восстановление опустошенной Руси.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Раздел 4: Стратегия выбора Александра Невского -->
+    <div class="section-title">
+      <h2>4. Историческая миссия: Двувекторная политика князя</h2>
+    </div>
+
+    <div class="strategy-grid">
+      <div class="strat-card west-mode">
+        <div class="strat-title">⚔️ Западное направление — «Воин»</div>
+        <ul class="strat-list">
+          <li><strong>Суть угрозы:</strong> Экспансия католического Рима, направленная на слом православной веры, уничтожение культуры и обращение населения в католицизм.</li>
+          <li><strong>Методы борьбы:</strong> Бескомпромиссное военное сопротивление мечом (разгром шведов на Неве в 1240 г. и крестоносцев на Чудском озере в 1242 г.).</li>
+          <li><strong>Итог:</strong> Сохранены северо-западные рубежи Руси, торговый выход к Балтийскому морю и религиозная автономия.</li>
+        </ul>
+      </div>
+
+      <div class="strat-card east-mode">
+        <div class="strat-title">📜 Восточное направление — «Дипломат»</div>
+        <ul class="strat-list">
+          <li><strong>Суть угрозы:</strong> Несокрушимая военная мощь Золотой Орды. Завоеватели требовали выплаты дани («выхода»), но проявляли веротерпимость к церкви.</li>
+          <li><strong>Методы борьбы:</strong> Гибкие дипломатические переговоры, регулярные поездки в Сарай и Орду во избежание новых опустошительных карательных набегов.</li>
+          <li><strong>Итог:</strong> Спасение населения от истребления, сохранение генофонда и выигрыш времени для концентрации сил будущей единой Руси.</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <div>Учебный курс: «История Древней Руси» • Практикум по визуализации исторических источников</div>
+      <div>Канонизирован Русской Православной Церковью как святой благоверный князь</div>
+    </footer>
+  </div>
+
+</body>
+</html>
